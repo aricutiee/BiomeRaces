@@ -1,0 +1,149 @@
+# Paper 1.21.11. Damage and health values are health points, not hearts.
+# Durations/cooldowns are seconds unless the key explicitly says ticks.
+combat:
+  minimum-attack-charge: 0.9
+  base-hits: 3
+  base-chain-timeout-seconds: 8
+  offensive-cooldown-seconds: 12
+  action-bar: true
+checks:
+  # Passive checks are per online player only. Hands are checked every tick.
+  passive-interval-ticks: 5
+  potion-lease-ticks: 600
+menu:
+  title: '<dark_green>Choose your race'
+  choice-warning: '<yellow>Permanent choice. An administrator can change it.'
+messages:
+  selected: '<green>Your base race is now <race>.'
+  locked: '<yellow>Your choice is saved. An administrator can change it. Use /race info.'
+  no-permission: '<red>You do not have permission.'
+  player-only: '<red>This command is for players.'
+  player-not-found: '<red>Player not found. Use an online name, a previously seen name, or a UUID.'
+  invalid-race: '<red>Choose bogborn, rootbound, petalfolk, hollow-eyed, or dwarf.'
+  reset: '<yellow>The saved base race was reset. Cooldowns were retained.'
+  reloaded: '<green>BiomeRaces configuration reloaded.'
+  reload-failed: '<red>Configuration was rejected. See the server log. Previous settings remain active.'
+  returned: '<gray>The ancient power recedes. Your base race returns.'
+  none: 'Unchosen'
+  info-heading: '<gold>Active race: <race>'
+  info-base: '<gray>Saved base race: <race>'
+  action-bar: '<gray><race> <dark_gray>| <gray>Chain <count> <dark_gray>| <gray>Offense <offense>s <dark_gray>| <gray>Defense <defense>s'
+bogborn:
+  icon: LILY_PAD
+  description:
+    - '<aqua>Swamp origin'
+    - '<gray>Water Breathing while your head is underwater.'
+    - '<gray>Bog Guard: 20% less melee/projectile damage in water, 25s cooldown.'
+    - '<gray>Venom Strike: every third hit poisons for 2s.'
+  defense-reduction: 0.20
+  defense-cooldown-seconds: 25
+  poison-seconds: 2
+  visual:
+    particles: [HAPPY_VILLAGER, BUBBLE]
+    count: 4
+    block: MUD
+    sound: minecraft:entity.frog.ambient
+    volume: 0.25
+    pitch: 0.8
+rootbound:
+  icon: MANGROVE_ROOTS
+  description:
+    - '<green>Mangrove swamp origin'
+    - '<gray>Root Runner: Speed I on mud or mangrove roots.'
+    - '<gray>Hold Fast: 10% less damage and 60% less hit knockback, 25s cooldown.'
+    - '<gray>Root Snare: every third hit slows for 1.5s.'
+  passive-blocks: [MUD, MANGROVE_ROOTS, MUDDY_MANGROVE_ROOTS]
+  defense-blocks: [MUD, DIRT, COARSE_DIRT, ROOTED_DIRT, MANGROVE_ROOTS, MUDDY_MANGROVE_ROOTS]
+  defense-reduction: 0.10
+  knockback-reduction: 0.60
+  defense-cooldown-seconds: 25
+  slowness-seconds: 1.5
+  visual:
+    particles: [BLOCK]
+    count: 8
+    block: MANGROVE_ROOTS
+    sound: minecraft:block.muddy_mangrove_roots.step
+    volume: 0.35
+    pitch: 0.8
+petalfolk:
+  icon: CHERRY_SAPLING
+  description:
+    - '<light_purple>Cherry grove origin'
+    - '<gray>Lightfoot: 20% less fall damage.'
+    - '<gray>Petal Shield: Absorption I for 4s after surviving a hit, 30s cooldown.'
+    - '<gray>Bloom Strike: every third hit restores half a heart.'
+  fall-reduction: 0.20
+  absorption-seconds: 4
+  defense-cooldown-seconds: 30
+  healing: 1
+  visual:
+    particles: [CHERRY_LEAVES]
+    count: 5
+    block: CHERRY_LEAVES
+    sound: minecraft:block.amethyst_block.chime
+    volume: 0.25
+    pitch: 1.3
+hollow-eyed:
+  icon: PALE_OAK_SAPLING
+  description:
+    - '<gray>Pale Garden origin'
+    - '<gray>Dark Sight: Night Vision in effective light 7 or lower.'
+    - '<gray>Stillness: 20% less melee/projectile damage in low light, 25s cooldown.'
+    - '<gray>Dread Touch: every third hit applies Darkness for 1s.'
+  light-threshold: 7
+  light-debounce-ticks: 10
+  defense-reduction: 0.20
+  defense-cooldown-seconds: 25
+  darkness-seconds: 1
+  visual:
+    particles: [BLOCK, SMOKE]
+    count: 4
+    block: PALE_OAK_WOOD
+    sound: minecraft:entity.creaking.ambient
+    volume: 0.2
+    pitch: 0.8
+dwarf:
+  icon: POINTED_DRIPSTONE
+  description:
+    - '<gold>Dripstone cave origin'
+    - '<gray>Deep Miner: Haste I below Y=40.'
+    - '<gray>Stone Landing: prevent up to 4 hearts of fall damage on stone/deepslate.'
+    - '<gray>Heavy Strike: every third hit adds half a heart before armor.'
+  underground-height: 40
+  landing-blocks: [STONE, DEEPSLATE]
+  fall-prevention: 8
+  defense-cooldown-seconds: 30
+  bonus-damage: 1
+  visual:
+    particles: [BLOCK]
+    count: 7
+    block: DRIPSTONE_BLOCK
+    sound: minecraft:block.stone.hit
+    volume: 0.3
+    pitch: 0.7
+dragonborn:
+  description:
+    - '<light_purple>Temporary Dragon Egg transformation'
+    - '<gray>Four extra maximum hearts, Strength I, Speed I, Fire Resistance.'
+    - '<gray>Rising Fury: normal, normal, normal +2, 8, 10, 12, then +2 per hit.'
+    - '<gray>Changing targets or a 4s gap resets the chain.'
+  extra-max-health: 8
+  chain-timeout-seconds: 4
+  third-hit-bonus: 2
+  replacement-start-hit: 4
+  damage-per-hit-number: 2
+  message-interval-ticks: 16
+  transformation-messages:
+    - '<light_purple>You feel yourself changing.'
+    - '<light_purple>.'
+    - '<light_purple>..'
+    - '<light_purple>...'
+    - '<light_purple>Something ancient wakes inside you.'
+    - '<light_purple>You have become Dragonborn.'
+  visual:
+    particles: [PORTAL]
+    count: 12
+    block: OBSIDIAN
+    sound: minecraft:entity.ender_dragon.ambient
+    volume: 0.15
+    pitch: 0.8

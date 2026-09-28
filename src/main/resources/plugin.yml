@@ -1,0 +1,31 @@
+name: BiomeRaces
+version: 1.0.0
+main: dev.biomeraces.BiomeRaces
+api-version: '1.21.11'
+description: Automatic biome-themed races and a temporary Dragon Egg transformation.
+author: BiomeRaces
+commands:
+  race:
+    description: Choose a race or view race information.
+    usage: /race [info|set <player> <race>|reset <player>|reload]
+    permission: biomeraces.use
+permissions:
+  biomeraces.use:
+    description: Open the race menu and view race information.
+    default: true
+  biomeraces.admin.set:
+    description: Set another player's saved base race.
+    default: op
+  biomeraces.admin.reset:
+    description: Reset another player's saved base race.
+    default: op
+  biomeraces.admin.reload:
+    description: Reload BiomeRaces configuration.
+    default: op
+  biomeraces.admin:
+    description: All BiomeRaces administrative commands.
+    default: op
+    children:
+      biomeraces.admin.set: true
+      biomeraces.admin.reset: true
+      biomeraces.admin.reload: true
