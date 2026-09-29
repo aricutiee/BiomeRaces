@@ -3,7 +3,7 @@ version: 1.0.0
 main: dev.biomeraces.BiomeRaces
 api-version: '1.21.11'
 description: Automatic biome-themed races and a temporary Dragon Egg transformation.
-author: BiomeRaces
+authors: [ari]
 commands:
   race:
     description: Choose a race or view race information.
